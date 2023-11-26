@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UFO Sightings</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>UFO Sightings Dashboard</h1>
+        <p>Use the filter below to explore UFO sightings over the years</p>
+      </div>
+    </div>
+
+<!-- Year Filter Section -->
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well">
+          <h5>Year</h5>
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+
+<!-- bar chart: Shapes -->
+      <div class="col-md-5">
+        <div id="bar-chart"></div>
+      </div>
+      
+<!-- bubble map -->
+      <div class="col-md-5">
+        <div id="scattermapbox"></div>
+      </div>
+   
+    </div>
+<!-- bubble chart -->   
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="./index.js"></script>
+  <!-- <script src="./static/js/bonus.js"></script> -->
+
+</body>
+
+</html>
