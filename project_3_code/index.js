@@ -4,25 +4,20 @@ function createCharts(selectedYear) {
         .then(data => {
             // Filter data based on the selected year
             let filteredData = data.filter(entry => entry.Year == selectedYear);
-
             // Initialize an object to store counts for each hour in each month
             let countsByMonthAndHour = {};
-
             // Populate the object with each month and hour as properties and initial count set to 0
             for (let month = 1; month <= 12; month++) {
                 countsByMonthAndHour[month] = Array.from({ length: 24 }, () => 0);
             }
-
             // Iterate through the filtered data
             for (let entry of filteredData) {
                 // Increment the count for the corresponding month and hour
                 countsByMonthAndHour[entry.Month][entry.Hour]++;
             }
-
             // Create data for Plotly chart
             let bubbleData = [];
             let maxCount = Math.max(...Object.values(countsByMonthAndHour).flat());
-
             for (let month = 1; month <= 12; month++) {
                 for (let hour = 0; hour < 24; hour++) {
                     let size = countsByMonthAndHour[month][hour] / maxCount * 50; // Adjust the scaling factor as needed
@@ -34,13 +29,11 @@ function createCharts(selectedYear) {
                     });
                 }
             }
-
             // Map numeric month values to month names
             let monthNames = [
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             ];
-
             // Create the Plotly chart
             let bubbleLayout = {
                 title: "UFO Sightings by Hour & Month",
@@ -56,9 +49,11 @@ function createCharts(selectedYear) {
                     tickvals: Array.from({ length: 24 }, (_, i) => i + 1),
                 },
                 height: 800,
-                width: 1000
+                width: 1000,
+                paper_bgcolor: 'black',
+                plot_bgcolor: 'black',
+                font: { color: 'white' }
             };
-
             let bubbleDataPlotly = [
                 {
                     type: "scatter",
@@ -67,8 +62,8 @@ function createCharts(selectedYear) {
                     y: bubbleData.map(entry => entry.y),
                     marker: {
                         size: bubbleData.map(entry => entry.size),
-                        color: bubbleData.map(entry => entry.x), // Assign different colors based on the month
-                        colorscale: "Viridis", // You can choose a different colorscale
+                        color: bubbleData.map(entry => entry.x),
+                        colorscale: "Viridis",
                         colorbar: {
                             title: "Month"
                         }
@@ -82,17 +77,13 @@ function createCharts(selectedYear) {
             Plotly.newPlot("bubble", bubbleDataPlotly, bubbleLayout);
         });
 }
-
 // Call the createCharts function to initiate the data fetching and chart creation
 createCharts();
-
 getData(); // Call without a parameter
-
 // Function to fetch and plot data
 async function getData(selectedYear) {
     let response = await fetch('ufo_sightings.us_ufo_sightings.json');
     let data = await response.json();
-
     // Filter data based on selected year
     if (selectedYear) {
         data = data.filter(entry => entry.Year == selectedYear);
@@ -105,7 +96,6 @@ async function getData(selectedYear) {
         const shape = entry.UFO_shape;
         shapeCounts[shape] = (shapeCounts[shape] || 0) + 1;
     });
-
     // Create traces for the bar chart
     let trace1 = {
         x: Object.keys(shapeCounts),
@@ -115,7 +105,6 @@ async function getData(selectedYear) {
             color: getRandomColors(Object.keys(shapeCounts).length)
         }
     };
-
     // Create layout
     let layout = {
         title: 'UFO Sightings by Shape',
@@ -126,14 +115,15 @@ async function getData(selectedYear) {
             title: 'Number of Sightings'
         },
         height: 400,
-        width: 1000
+        width: 1000,
+        paper_bgcolor: 'black',
+        plot_bgcolor: 'black',
+        font: { color: 'white' }
     };
-
     console.log("bar works")
     // Plot the bar chart
     Plotly.newPlot('bar-chart', [trace1], layout);
 }
-
 // Function to generate an array of random colors
 function getRandomColors(count) {
     let colors = [];
@@ -142,41 +132,40 @@ function getRandomColors(count) {
     }
     return colors;
 }
-
-
 function optionChanged() {
     // Get the selected year from the dropdown
     let selectedYear = d3.select("#selDataset").property("value");
-
     // Call createCharts with the selected year
     createCharts(selectedYear);
     getData(selectedYear)
 }
-
-
 function init() {
     let dropdown = d3.select("#selDataset");
-
     // Load the JSON data
     d3.json("ufo_sightings.us_ufo_sightings.json").then((data) => {
         let years = data.map(entry => entry.Year); // Assuming 'data' is an array of objects
-
         // Remove duplicate years
         let uniqueYears = Array.from(new Set(years));
-
         // Populate the dropdown with unique years
         uniqueYears.forEach(year => {
             dropdown.append("option").text(year).property("value", year);
         });
-
         // Create the chart with the first year
         createCharts(uniqueYears[0]);
         getData(uniqueYears[0]);
     });
 }
-
 // Call the init function to initiate the dropdown and chart creation
 init();
+
+
+
+
+
+
+
+
+
 
 
 
