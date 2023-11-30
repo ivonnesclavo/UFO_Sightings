@@ -15,78 +15,103 @@
       <div class="col-md-12 jumbotron text-center"
         style="background-color: black; padding: 20px; margin-bottom: 0; border-radius: 10px;">
         <h1 style="color: limegreen;">UFO Sightings Dashboard</h1>
-        <p style="color: #ddd; font-weight: bold; font-size: 26px">Use the filters below to explore UFO sightings in the U.S.A</p>
+        <p style="color: #ddd; font-weight: bold; font-size: 26px">Use the filters below to explore UFO sightings in the
+          U.S.A</p>
       </div>
     </div>
 
     <!-- Tableau Dashboard -->
-<div class='tableauPlaceholder' id='viz1701139919074' style='position: relative'><noscript><a href='#'><img
-        alt='Dashboard 1 '
-        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;UF&#47;UFOSightingsProject3WIP&#47;Dashboard1&#47;1_rss.png'
-        style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
-    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-    <param name='embed_code_version' value='3' />
-    <param name='site_root' value='' />
-    <param name='name' value='UFOSightingsProject3WIP&#47;Dashboard1' />
-    <param name='tabs' value='no' />
-    <param name='toolbar' value='yes' />
-    <param name='static_image'
-      value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;UF&#47;UFOSightingsProject3WIP&#47;Dashboard1&#47;1.png' />
-    <param name='animate_transition' value='yes' />
-    <param name='display_static_image' value='yes' />
-    <param name='display_spinner' value='yes' />
-    <param name='display_overlay' value='yes' />
-    <param name='display_count' value='yes' />
-    <param name='language' value='en-US' />
-    <param name='filter' value='publish=yes' />
-  </object></div>
-<script
-  type='text/javascript'>                    var divElement = document.getElementById('viz1701139919074'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '1280px'; vizElement.style.height = '747px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '1280px'; vizElement.style.height = '747px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '827px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    <div class='tableauPlaceholder' id='viz1701139919074' style='position: relative'><noscript><a href='#'><img
+            alt='Dashboard 1 '
+            src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;UF&#47;UFOSightingsProject3WIP&#47;Dashboard1&#47;1_rss.png'
+            style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='site_root' value='' />
+        <param name='name' value='UFOSightingsProject3WIP&#47;Dashboard1' />
+        <param name='tabs' value='no' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image'
+          value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;UF&#47;UFOSightingsProject3WIP&#47;Dashboard1&#47;1.png' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+        <param name='filter' value='publish=yes' />
+      </object></div>
+    <script
+      type='text/javascript'>                    var divElement = document.getElementById('viz1701139919074'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '1280px'; vizElement.style.height = '747px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '1280px'; vizElement.style.height = '747px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '827px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
-  <!-- Header for Plotly charts -->
-  <body style="background-color: black; color: white;">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 jumbotron text-center"
-          style="background-color: black; padding: 20px; margin-bottom: 0; border-radius: 10px;">
-          <h1 style="color: black; font-size: 50px">NA onlyusing this to create blank black space</h1>
-          <p style="color: #ddd; font-weight: bold; font-size: 26px">Use the Year filter below to explore UFO sightings by shape and hour</p>
+    <!-- Header for Plotly charts -->
+
+    <body style="background-color: black; color: white;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 jumbotron text-center"
+            style="background-color: black; padding: 20px; margin-bottom: 0; border-radius: 10px;">
+            <h1 style="color: black; font-size: 50px">NA onlyusing this to create blank black space</h1>
+            <p style="color: #ddd; font-weight: bold; font-size: 26px">Use the Year filter below to explore UFO
+              sightings by shape and hour</p>
+          </div>
+        </div>
+
+        <!-- Year Filter Section -->
+        <div class="row" style="background-color: black;">
+          <div class="col-md-2">
+            <div class="well" style="background-color: black; color: limegreen; border: none;">
+              <h5 style="font-size: 18px;">Year</h5>
+              <select id="selDataset" onchange="optionChanged(this.value)" style="color: black;"></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bar chart: Shapes -->
+        <div class="row">
+          <div class="col-md-5" style="background-color: black;">
+            <div id="bar-chart" style="color: white;"></div>
+          </div>
+
+          <!-- Bubble map -->
+          <div class="col-md-5" style="background-color: black;">
+            <div id="scattermapbox" style="color: white;"></div>
+          </div>
+        </div>
+
+        <!-- Bubble chart -->
+        <div class="row">
+          <div class="col-md-12" style="background-color: black;">
+            <div id="bubble" style="color: white;"></div>
+          </div>
         </div>
       </div>
+      <script src="https://d3js.org/d3.v7.min.js"></script>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <script src="./index.js"></script>
 
-  <!-- Year Filter Section -->
-    <div class="row" style="background-color: black;">
-      <div class="col-md-2">
-        <div class="well" style="background-color: black; color: limegreen; border: none;">
-          <h5 style="font-size: 18px;">Year</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)" style="color: black;"></select>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Bar chart: Shapes -->
-    <div class="row">
-      <div class="col-md-5" style="background-color: black;">
-        <div id="bar-chart" style="color: white;"></div>
-      </div>
-      
-      <!-- Bubble map -->
-      <div class="col-md-5" style="background-color: black;">
-        <div id="scattermapbox" style="color: white;"></div>
-      </div>
-    </div>
-    
-    <!-- Bubble chart -->
-    <div class="row">
-      <div class="col-md-12" style="background-color: black;">
-        <div id="bubble" style="color: white;"></div>
-      </div>
-    </div>
-  </div>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="./index.js"></script>
-</body>
+      <!-- Tableau animation -->
+      <div class='tableauPlaceholder' id='viz1701147638572' style='position: relative'><noscript><a href='#'><img
+              alt='Dashboard 2 '
+              src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;MapAnimationOvertime&#47;Dashboard2&#47;1_rss.png'
+              style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+          <param name='embed_code_version' value='3' />
+          <param name='site_root' value='' />
+          <param name='name' value='MapAnimationOvertime&#47;Dashboard2' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+          <param name='static_image'
+            value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;MapAnimationOvertime&#47;Dashboard2&#47;1.png' />
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner' value='yes' />
+          <param name='display_overlay' value='yes' />
+          <param name='display_count' value='yes' />
+          <param name='language' value='en-US' />
+        </object></div>
+      <script
+        type='text/javascript'>                    var divElement = document.getElementById('viz1701147638572'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '960px'; vizElement.style.height = '577px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '960px'; vizElement.style.height = '577px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '727px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </body>
 
 </html>
-

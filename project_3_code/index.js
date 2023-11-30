@@ -21,12 +21,12 @@ function createCharts(selectedYear) {
             let maxCount = Math.max(...Object.values(countsByMonthAndHour).flat());
             for (let month = 1; month <= 12; month++) {
                 for (let hour = 0; hour < 24; hour++) {
-                    let size = countsByMonthAndHour[month][hour] / maxCount * 50; // Adjust the scaling factor as needed
+                    let size = countsByMonthAndHour[month][hour] / maxCount * 50;
                     bubbleData.push({
                         x: month,
-                        y: hour + 1, // Ofsetting hours to start from 1
+                        y: hour + 1,
                         size: size,
-                        count: countsByMonthAndHour[month][hour] // Count for hover text
+                        count: countsByMonthAndHour[month][hour]
                     });
                 }
             }
@@ -146,7 +146,7 @@ function init() {
     let dropdown = d3.select("#selDataset");
     // Load the JSON data
     d3.json("ufo_sightings.us_ufo_sightings.json").then((data) => {
-        let years = data.map(entry => entry.Year); // Assuming 'data' is an array of objects
+        let years = data.map(entry => entry.Year); 
         // Remove duplicate years
         let uniqueYears = Array.from(new Set(years));
         // Populate the dropdown with unique years
