@@ -9,6 +9,10 @@ Analyzed UFO sightings in the United States to create data visualizations using 
 - See `UFO_Clean.ipynb` Jupyter Notebook for data cleaning using pandas.
 - See `us_ufo.csv` for exported clean dataset used for data analysis.
 - See `project_3_code` folder for JavaScript, HTML, and json files.
+- See link below for presentation:
+
+https://docs.google.com/presentation/d/1lbXhkaddB_2MCKtkMjSOPYURSi2gqmxs8cmwjn_48_A/edit?usp=sharing
+
 
 # References
 - Jon Wright & Willian Oliveira, (2023). UFO Sightings [dataset]. Kaggle. https://doi.org/10.34740/KAGGLE/DSV/6913786.
